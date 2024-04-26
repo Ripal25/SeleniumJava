@@ -18,6 +18,7 @@ public class HomePage extends GenericWrappers {
 	{
 		clickByXPath(prop.getProperty("FBHomePage.CreateNewBtn.XPath"));
 		return new RegistrationPage(driver,test);
+	
 	}
 
 }
