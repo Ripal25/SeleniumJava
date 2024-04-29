@@ -13,6 +13,7 @@ public abstract class Reporting {
 	public String testCaseName, testCaseDescription;
 
 	public String author, category;
+	
 
 	public void StartReport() {
 		report = new ExtentReports("./reports/Result.html", false);// path of folder where report are saved.

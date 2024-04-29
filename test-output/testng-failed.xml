@@ -3,19 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="twittertestcase.TwitterTestCase">
+      <class name="testcases.FBTestCase">
         <methods>
           <include name="afterSuit"/>
           <include name="beforeTest"/>
           <include name="afterMethod"/>
-          <include name="TwitterCreateNewUser"/>
+          <include name="FBRegistration" invocation-numbers="0 1 2"/>
           <include name="afterTest"/>
           <include name="afterClass"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
           <include name="BeforeSuit"/>
         </methods>
-      </class> <!-- twittertestcase.TwitterTestCase -->
+      </class> <!-- testcases.FBTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

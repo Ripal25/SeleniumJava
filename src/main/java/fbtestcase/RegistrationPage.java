@@ -38,11 +38,12 @@ public class RegistrationPage extends GenericWrappers {
 		return this;
 	}
 	
-	public RegistrationPage setBirthDate(Integer month,String day,String year)
+	public RegistrationPage setBirthDate(String birthdate)
 	{
-		selectIndexById(prop.getProperty("FBRegPage.BirthMonth.ID"), month);
-		selectValueById(prop.getProperty("FBRegPage.BirthDay.ID"), day);
-		selectVisibleTextById(prop.getProperty("FBRegPage.BirthYear.ID"), year);
+		String[] bdate = birthdate.split("/");
+		selectVisibleTextById(prop.getProperty("FBRegPage.BirthMonth.ID"), bdate[0]);
+		selectValueById(prop.getProperty("FBRegPage.BirthDay.ID"), bdate[1]);
+		selectVisibleTextById(prop.getProperty("FBRegPage.BirthYear.ID"), bdate[2]);
 		return this;
 	}
 	

@@ -8,6 +8,9 @@ import java.time.Duration;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -24,7 +27,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
-
+import org.testng.annotations.DataProvider;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.Reporting;
@@ -33,6 +36,7 @@ public class GenericWrappers extends Reporting implements wrappers {
 
 	public static RemoteWebDriver driver;
 	public static Properties prop;
+	public static String excelfilepath, excelsheetnumber;
 	
 	@Override
 	public void invokeApp(String browser, String url) {
@@ -557,6 +561,34 @@ public void loadObjects(){
 	public void unloadObjects(){
 		
 		prop=null;
+	}
+	
+	@DataProvider(name="ExcelDataProvider")
+	public String[][] getExcelData() throws IOException
+	{
+		String[][] data = null;
+		
+		FileInputStream file = new FileInputStream(excelfilepath);		
+		XSSFWorkbook workbook = new XSSFWorkbook(file);
+		XSSFSheet sheet  = workbook.getSheetAt(Integer.decode(excelsheetnumber));
+		int rowCount = sheet.getLastRowNum();
+		int columnCount = sheet.getRow(0).getLastCellNum();
+		
+		data = new String[rowCount][columnCount];
+		
+		for(int i = 1;i<=rowCount;i++)
+		{
+			XSSFRow row = sheet.getRow(i);			
+			for(int j=0;j<columnCount;j++)
+			{
+				String celldata = row.getCell(j).getStringCellValue();
+				
+				data[i-1][j] = celldata;
+				
+			}
+		}
+		
+		return data;
 	}
 
 

@@ -1,4 +1,4 @@
-package twittertestcase;
+package testcases;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

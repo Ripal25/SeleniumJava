@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import irctctestcase.Login;
+import wrappers.GenericWrappers;
 import wrappers.ProjectWrappers;
 
 public class IRCTCTestCase extends ProjectWrappers {
@@ -17,9 +18,11 @@ public class IRCTCTestCase extends ProjectWrappers {
 		category="Smoke";
 		browser="chrome";
 		appname="IRCTC";
+		excelfilepath="./testdata/IRCTCTest.xlsx";
 	}
 	
 	@Test
+	(description="IRCTCRegistration",enabled=true,priority = 0,dataProvider = "ExcelDataProvider",dataProviderClass = GenericWrappers.class)
 	public void IRCTCRegistration() throws InterruptedException
 	{
 		new Login(driver, test)
