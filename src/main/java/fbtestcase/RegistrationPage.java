@@ -28,7 +28,7 @@ public class RegistrationPage extends GenericWrappers {
 	
 	public RegistrationPage enterEmailId(String email) throws InterruptedException
 	{
-		enterByName(prop.getProperty("FBRegPage.Email.Name"), email);
+		enterByName(prop.getProperty("FBRegPage.Email.Namee"), email);
 		return this;
 	}
 	
